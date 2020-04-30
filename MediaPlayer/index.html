@@ -1,12 +1,36 @@
 <!DOCTYPE html>
-<!-- Copyright (C) 2018 Scott Henshaw, All Rights Reserved -->
+
+<!-- Copyright (C) 2020 Enya Rodriguez, All Rights Reserved -->
 <html>
     <head>
         <title>Media Player</title>
         <link rel="stylesheet" type="text/css" href="css/style_base.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/mobile.css" />
-    </head>
+
+        <script type="module" src="scripts/index.js"></script>
+
+    <!-- JQuery -->
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+    <!-- Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="//www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+            
+    <!-- Add Firebase products that you want to use -->
+    <script src="//www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>  
+    <script src="//www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>  
+    <script src="//www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>  
+    
+
+    <!-- Other Libraries -->
+    <script type="text/javascript" src="scripts/Lib/jsmediatags.min.js"></script>
+    <script type="text/javascript" src="scripts/Lib/buzz.min.js"></script>
+    <script type="text/javascript" src="scripts/Lib/jdataview.js"></script>
+
     <body>
         <section id="app-container" class="flex-container">
             <header>
@@ -15,7 +39,7 @@
                 <div id="extras-btn"></div>
             </header>
 
-            <aside id="left-menu" class="left">
+            <aside id="left-menu">
                 <div id="sidebar-accordion">
 
                     <div class="group">
@@ -45,7 +69,13 @@
         	                <input type="text" id="track-album" class="playing-field" name="track-album" readonly="true" value="Mother" />
         	                <input type="text" id="track-year"  class="playing-field" name="track-year"  readonly="true" value="2013" /><br />
                             <label id='track-duration'>00:00</label>
-    	                </div>
+                        </div>
+                        
+                        <!-- the actual generated playlist-->
+                        <ul id="the-playlist" class="left">
+                            
+                        </ul>
+
                     </section>
                 </div>
             </div>
@@ -73,10 +103,27 @@
                 </div>
                 <div class="clear"></div>
             </section>
+            <br/>
+            <section>
+                <form id="playlist-item" class="data-entry">
+                    <label>Track Name</label>
+                    <input type="text" name="track-name-entry" value=""><br/>
+                    <label>Track Album</label>
+                    <input type="text" name="track-album-entry" value=""><br/>
+
+                    <label>Track Artist</label>
+                    <input type="text" name="track-artist-entry" value=""><br/>
+                    <label>Track Year</label>
+                    <input type="text" name="track-year-entry" value=""><br/>
+
+                    <input type="submit" name="submit" id="Save">
+                </form>
+            </section>
+
             <div id="virtual-console"><!-- dynamic updates --></div>
         </section>
 
-        <script type="module" src="scripts/index.js"></script>
+        
 
     </body>
 </html>

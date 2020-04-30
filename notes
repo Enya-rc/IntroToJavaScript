@@ -1,0 +1,124 @@
+/**
+ * @copyright: (C) 2020 Vancouver Film School.  All Rights Reserved.
+ * @author:    Your Name {@link mailto:ddXXname@vfs.com}
+ * @version:   1.0
+ */
+'use strict';
+
+import PlayList from './PlayList.js';
+
+export default class App {
+
+    constructor(device = 'web') {
+
+        // build a playlist
+        this.thePlayList = new PlayList();
+        this.thePlayList.populate();
+        this.currentTrack = new buzz.sound('../media/Summer Paradise (feat. Taka from ONE OK ROCK).mp3');
+
+        //Debug playlist editor handeler
+        
+        //Java Script code
+        // document.querySelector("#playlist-item")
+        // .addEventListener('submit', event => this.addToPlaylist(event));
+
+        //Jquery code
+        $("#playlist-item")
+            .on('submit', event => this.addToPlaylist(event));
+
+        // handle user input
+        $("#play")
+            .on("click", event => this.handlePlay(event));
+
+        $("#stop")
+            .on("click", event => this.handleStop( event ));
+
+        // Buttons
+
+        $("#beginning")
+            .on("click", event => this.defaultHandler(event));
+
+        $("#rewind")
+            .on("click", event => this.defaultHandler(event));
+
+        $("#forward")
+            .on("click", event => this.defaultHandler(event));
+
+        $("#end")
+            .on("click", event => this.defaultHandler(event));
+    }
+
+    addToPlaylist (event) {
+        event.preventDefault();
+        //grab input data into an object
+        // let name = document.querySelector('input[name="track-name-entry"]').value;
+
+        let name = $('input[name="track-name-entry"]').val();
+        let artist = $('input[name="track-artist-entry"]').val();
+        let album = $('input[name="track-album-entry"]').val();
+        let year = $('input[name="track-year-entry"]').val();
+
+        //format a new playlist item
+        
+        // JS Code
+            // let markup = `<li id="item-1">`;
+            // markup += `${year} (${album}) ${artist} - ${name}`;
+            // markup += `</li>`;
+        
+        // JQuery Code
+
+            $("#the-playlist").append (`<li id="item-1"> ${year} (${album}) ${artist} - ${name} </li>`)
+
+// append PlayList item to the actual PlayList
+
+        // JS Code
+            // let playlistElement = document.querySelector("#the-playlist");
+            // let existingPlaylistItems = playlistElement.innerHTML;
+            // existingPlaylistItems += markup;
+            // playlistElement.innerHTML = existingPlaylistItems;
+
+        // JQuery Code
+
+            $("#the-playlist").append(markup);
+
+    }
+
+    defaultHandler (event){
+        // document.querySelector("#virtual-console").innerHTML = "something happened";
+
+        $("#virtual-console").html ("something happened");
+    }
+
+    
+
+    handleStop( event ) {
+
+        this.currentTrack.stop();
+        // this.updateCurrentTrack("Hello", "Stop pressed");
+        // Dont change name of the song & stop playing
+    }
+
+    handlePlay(event){
+        this.currentTrack.play();
+    }
+
+    updateCurrentTrack( songName = "", userMsg = "Nothing happened") {
+
+        // this.currentSongName = songName;
+        // document.querySelector("#virtual-console").innerHTML = userMsg;
+        // console.log( userMsg );
+        // document.querySelector("#track-name").value = this.currentSongName;
+
+        this.currentSongName = songName;
+        $("#virtual-console").html (userMsg);
+        console.log( userMsg );
+        $("#track-name").val (this.currentSongName);
+    }
+
+    run() {
+
+        this.updateCurrentTrack();
+        // just waiting around for something to happen...
+    }
+
+}

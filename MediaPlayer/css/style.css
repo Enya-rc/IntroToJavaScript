@@ -29,3 +29,9 @@ header {
 .flex-item {
     flex: 1;
 }
+
+.left{
+    max-height: 30vh;
+    min-height: 30vh;
+    overflow-y: scroll;
+}
