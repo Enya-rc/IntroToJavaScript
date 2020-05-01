@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="css/style_base.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/mobile.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;1,200;1,600&display=swap" rel="stylesheet">
 
         <script type="module" src="scripts/index.js"></script>
 
@@ -35,34 +36,35 @@
     <!-- <script type="text/javascript" src="scripts/Lib/jdataview.js"></script> -->
 
     <body>
+
+        <!-- <h2>Mix Planet</h2> -->
         <section id="app-container" class="flex-container">
             <header>
                 <div id="hamburger-menu"></div>
-                <h2>Media Player</h2>
+                <h2> TuneUp </h2>
                 <div id="extras-btn"></div>
-            </header>
-
-            <aside id="left-menu">
+				
+				<aside id="left-menu">
                 <div id="sidebar-accordion">
 
                     <div class="group">
-                        <h3>Media Info</h3>
+                        <h3>SideA</h3>
                         <div id="wikipedia-info"><?php //Dynamic content here ?></div>
                     </div>
 
-                    <div class="group">
-                        <h3>Support/Contact</h3>
-                        <div></div>
-                    </div>
-
-                    <div class="group">
-                        <h3>About</h3>
-                        <div>Developed by the Instructors of VFS (C) 2015</div>
-                    </div>
+                 	<br>
 
                 </div>
-            </aside>
+            	</aside>
+            </header>
 
+            
+<section class="sec" >
+    <section class="sec-two">
+
+            <!-- <div class="img-track">
+                
+            </div> -->
             <div id="playlist" class="flex-item">
     	        <div id="app-area">
     	            <section id="current-track-area">
@@ -71,10 +73,14 @@
         	                <input type="text" id="track-name"  class="playing-field" name="track-name"  readonly="true" value="Said the Whale" />
         	                <input type="text" id="track-album" class="playing-field" name="track-album" readonly="true" value="Mother" />
         	                <input type="text" id="track-year"  class="playing-field" name="track-year"  readonly="true" value="2013" /><br />
-                            <label id='track-duration'>00:00</label>
+                            <div class="time">
+                                <label id='track-duration'>00:00</label>
+                                <label id='track-current-duration'>00:00</label>
+                            </div>
                         </div>
                         
                         <!-- the actual generated playlist-->
+                        <div style="text-align: left; "><b>Playlist:</b></div>
                         <ul id="the-playlist" class="left">
                             
                         </ul>
@@ -92,22 +98,24 @@
                     <button id="forward">fast forward</button>
                     <button id="end">last</button>
 
+                    <br>
+
                     <input type="checkbox" id="shuffle">
                     <label for="shuffle">Shuffle</label>
 
                     <span id="repeat">
-                        <input type="radio" id="repeat0" name="repeat" checked="checked">
-                        <label for="repeat0">No Repeat</label>
-                        <input type="radio" id="repeat1" name="repeat">
-                        <label for="repeat1">Once</label>
-                        <input type="radio" id="repeatall" name="repeat">
-                        <label for="repeatall">All</label>
+                        <input class="repeat-extra" type="radio" id="repeat0" name="repeat" checked="checked">
+                        <label class="repeat-extra" for="repeat0">No Repeat</label>
+                        <input class="repeat-extra" type="radio" id="repeat1" name="repeat">
+                        <label class="repeat-extra" for="repeat1">Once</label>
+                        <input class="repeat-extra" type="radio" id="repeatall" name="repeat">
+                        <label class="repeat-extra" for="repeatall">All</label>
                     </span>
                 </div>
                 <div class="clear"></div>
             </section>
             <br/>
-            <section>
+            <!-- <section>
                 <form id="playlist-item" class="data-entry">
                     <label>Track Name</label>
                     <input type="text" name="track-name-entry" value=""><br/>
@@ -121,7 +129,9 @@
 
                     <input type="submit" name="submit" id="Save">
                 </form>
+            </section> -->
             </section>
+        </section>
 
             <div id="virtual-console"><!-- dynamic updates --></div>
         </section>

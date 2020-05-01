@@ -1,15 +1,21 @@
 /* Copyright (C) 2018 Scott Henshaw, All Rights Reserved */
+body{
+    background-color: #272945;
+}
+
 header {
     position: relative;
     margin: 30px auto 0;
     width: 320px;
-    height: 44px;
+    height: fit-content;
     line-height: 44px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     font-weight: 700;
     font-size: 1.75em;
+	align-content: center;
+	text-align: center;
 }
 
 .box-border {

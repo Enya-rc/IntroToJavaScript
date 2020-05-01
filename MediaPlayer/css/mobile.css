@@ -4,7 +4,7 @@
 
 /* iOS */
 .ios {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 
     /* note apple’s support for this extends to custom types */
     font: -apple-system-body;
@@ -13,7 +13,7 @@
 
 /* iOS STYLES */
 .ios header {
-    font-family: 'HelveticaNeue', Arial, sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-size: 17px;
     background-color: #f7f7f7;
     padding: 0 88px;
@@ -157,7 +157,13 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 320px) 
 
     /* Medium screen, non-retina */
     body { font-size:14px; }
-    #app-container { max-width: 600px; }
+    
+    #app-container { max-width: 100vw; 
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    
+    }
 }
 
 @media
@@ -190,7 +196,7 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
   /* Large screen, retina, stuff to override above media query */
     .logo {
       background: url(logo@2x.png) no-repeat 0 0;
-      background-size: 120px;    /* Equal to normal logo width */
+      background-size: 120px;   /* Equal to normal logo width */
    }
 
 }

@@ -16,10 +16,36 @@ body, h1, h2, h3, h4, p, blockquote, ul[class], ol[class], li, dl, dd, figure, f
 
 /* Set core body defaults */
 body {
+    width: 100vw;
     min-height: 100vh;
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
+   
+}
+
+h1{
+    color: #f17287;
+}
+
+h3{
+    text-align: center;
+    font-size: .8em;
+    color: #fff;
+}
+
+section.sec{
+    width: 100vw;
+    background-color: #3a4168;
+    padding: 60px 0;
+    display: flex; 
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+}
+
+section.sec-two{
+    width: 50%; 
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
@@ -51,7 +77,7 @@ input, button, textarea, select { font: inherit; }
 /* Add Styles for a grey bland teaching world */
 
 body, html {
-    background: #242527;
+    background: #272945;
     border: none;
     color: #fff;
     font-family: Helvetica, Arial, sans-serif;
@@ -65,7 +91,7 @@ body, div, ul {
     margin:0;
     padding:0;
     border:none;
-    color:#fff;
+    color:#f17287;
 }
 
 button {
@@ -79,7 +105,32 @@ form {
     color: white;
     /* font-size: 150%; */
 }
-input {height: 1.4em;font-weight:  700;font-size: 1.2em;}
+input {height: 1.4em;font-weight:  700;font-size: 1.2em; background-color: #3a4168; border: none; color: #fff; text-align: center; width: 32%;}
+
+.repeat-extra{
+    width: fit-content;
+}
+
+input.repeat-extra{
+    padding-left: 2%;
+}
+
+.current-track-area{
+    display: flex;
+    align-content: space-between;
+    flex-direction: column;
+}
+
+.img-track{
+    text-align: center;
+    background-image: url("../img/Residente-Rene.jpg");
+    height: 30px;
+    width: 30px;
+}
+/* .time{
+    display: flex;
+    align-content: space-between;
+} */
 
 .debug {
     border:1px dashed red;
