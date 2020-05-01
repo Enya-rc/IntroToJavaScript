@@ -19,13 +19,12 @@ export default class App {
             .then(playList => {
                 //update UI with new data
                 for (let song of playList){
-                    let entryMarkup = this.generatePlaylistEntry (1990, song.name, "");
+                    let entryMarkup = this.generatePlaylistEntry (1990, song.name, "",);
                     $("#the-playlist").append(entryMarkup);
                 }
             })
 
         //Debug playlist editor handeler
-        
         $("#playlist-item").on('submit', event => this.addToPlaylist(event));
 
         // handle user input
@@ -39,7 +38,7 @@ export default class App {
     }
 
     generatePlaylistEntry (year, name, album){
-    return `<li id="item-${this.trackId++}">${year} ${name} - ${album}</li>`
+    return `<li id="item-${this.trackId++}">${year} ${name} - ${album}</li>`;
     }
 
     addToPlaylist (event) {
@@ -51,7 +50,7 @@ export default class App {
 
         // append PlayList item to the actual PlayList
             let entryMarkup = this.generatePlaylistEntry (year , name, album);
-            $("#the-playlist").append(markup);
+            $("#the-playlist").append( entryMarkup );
 
     }
 

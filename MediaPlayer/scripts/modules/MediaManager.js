@@ -5,30 +5,31 @@
  */
 'use strict';
 
-import PlayList from './PlayList.js';
+// import PlayList from './PlayList.js';
+import Track from './Track.js';
 // import * as PlayList from './PlayList.js';
-import { realpathSync } from 'fs';
+// import { realpathSync } from 'fs';
 
 export default class MediaManager {
 
     constructor () {
 
         this.config = {
+
             apiKey: "AIzaSyBenwm7cXVkEGBlBaqbpQilSx0iIcmgTuc",
-            authDomain: "vfs-MediaPlayer.firebaseapp.com",
-            databaseURL: "https://vfs-MediaPlayer.firebaseio.com",
-            projectId: "vfs-MediaPlayer",
-            storageBucket: "vfs-MediaPlayer.appspot.com",
+            authDomain: "vfs-mediaplayer-4a628.firebaseapp.com",
+            databaseURL: "https://vfs-mediaplayer-4a628.firebaseio.com",
+            projectId: "vfs-mediaplayer-4a628",
+            storageBucket: "vfs-mediaplayer-4a628.appspot.com",
             messagingSenderId: "858192019109",
-            appId: "vfs-MediaPlayer",
+            appId: "1:858192019109:web:98b2db548d62779645d74c"
           };
 
         //   this.songData = null;
         //   this.media = null;
 
-
         firebase.initializeApp (this.config);
-        this.songData = firebase.firestore();
+        this.db = firebase.firestore();
         this.media = firebase.storage();
 
 
@@ -40,27 +41,31 @@ export default class MediaManager {
         //this is all going to be asychronous
         return new Promise ( async ( resolve, reject) => {
            
-            // let aPlaylist = [];
-            let mediaList = this.data.collection("media");
+            // go FETCH
+            let mediaList = this.db.collection("media");
             let query = mediaList.where("playlistName","==", playListName);
-
-            //got fetch
             let resultList = await query.get();
 
-            if (resultList == undifined)
+            if (resultList == undefined)
                 reject ({errorCode: 303, errorMsg:"It Failed"});
 
             // let counter = resultList.docs.length;
 
-            let fetchList = resultList.docs.map (async doc => {
-                
+
+console.log("problem passing this point, i tryed for a long time im sorry TT-TT")
+            let fetchList = resultList.docs.map (  async docs => {
+        
                 let musicData = doc.data();
-                let track = new Track( musicData);
-                let songURI = await this.fetchSongFromStorage( playListName, musicData.mediaURI)
-                
-                track.updatemedia( songURI );
+                //posible error media uri
+                let mediaRef = this.media.ref (musicData.mediaURI);
+        console.log("FINALLY!!")
+                musicData.uri = await mediaRef.getDownloadURL().catch(error => {
+                    this.handleFirebaseError (error)
+                });
+                let track = new Track (musicData);
                 return track
-            })
+            })           
+
 
             const aPlaylist = await Promise.all (fetchList);
             resolve(aPlaylist);

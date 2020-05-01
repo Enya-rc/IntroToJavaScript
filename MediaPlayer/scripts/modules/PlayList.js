@@ -24,7 +24,11 @@ export default class PlayList {
         //go ask media manager to get media files
         return new Promise ( async ( resolve, reject ) => {
             
-            this.playList = await this.mediaMgr.fetchPlaylist();
+            this.playList = await this.mediaMgr.fetchPlaylist().catch( error =>{
+                console.log(error);
+                reject(error)
+            });
+            
             this.first()
             resolve(this.playList)
         })

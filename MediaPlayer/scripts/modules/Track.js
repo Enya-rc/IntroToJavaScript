@@ -17,6 +17,7 @@ export default class Track {
         }
     
         */
+       console.log("TRACK");
 
        this.name = "unknown";
        this.artist = "TBD";

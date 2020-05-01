@@ -1,0 +1,33 @@
+ //methods to fetch the song/playlist
+    fetchPlaylist(playListName = "all") {
+
+        //this is all going to be asychronous
+        return new Promise ( async ( resolve, reject) => {
+           
+            // let aPlaylist = [];
+            let mediaList = this.db.collection("media");
+            let query = mediaList.where("playlistName","==", playListName);
+
+            //got fetch
+            let resultList = await query.get();
+
+            if (resultList == undifined)
+                reject ({errorCode: 303, errorMsg:"It Failed"});
+
+            // let counter = resultList.docs.length;
+
+            let fetchList = resultList.docs.map (async doc => {
+                
+                let musicData = doc.data();
+                let track = new Track( musicData);
+                let songURI = await this.fetchSongFromStorage( playListName, musicData.mediaURI)
+                
+                track.updatemedia( songURI );
+                return track
+            })
+
+            const aPlaylist = await Promise.all (fetchList);
+            resolve(aPlaylist);
+                
+            })
+    }
