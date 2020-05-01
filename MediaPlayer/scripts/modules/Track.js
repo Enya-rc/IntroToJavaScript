@@ -11,12 +11,6 @@ export default class Track {
 
     constructor( mediaData ) { //firebase data
 
-        /*
-        {
-            id: reference storage
-        }
-    
-        */
        console.log("TRACK");
 
        this.name = "unknown";
